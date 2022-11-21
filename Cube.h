@@ -9,7 +9,7 @@ class Cube {
 
   private:
       // don't think i need this one.
-//    GLubyte display_list;   // The display list that does all the work.
+    GLubyte display_list;   // The display list that does all the work.
     GLuint  texture_obj;    // The object for the grass texture.
     bool    initialized;    // Whether or not we have been initialised.
 
@@ -18,7 +18,10 @@ class Cube {
 public:
 
     // will be the constructor eventually
-    Cube(void);
+    Cube(void) {
+        display_list = 0;
+        initialized = false;
+    };
     // destructor
     ~Cube(void);
 
@@ -26,6 +29,8 @@ public:
     bool    Initialize(void);	// Gets everything set up for drawing.
 //    void    Update(void);	// Updates the location of the train
     void    Draw(void);		// Draws everything.
+
+    void    DrawCube(void); // Draws the actual cube I guess...
 };
 
 #endif // !_CUBE_H_

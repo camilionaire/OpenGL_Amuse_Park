@@ -68,5 +68,6 @@
     <Image Include="grass2.tga" />
     <Image Include="grass3.tga" />
     <Image Include="graphics.tga" />
+    <Image Include="wh_wood.tga" />
   </ItemGroup>
 </Project>
