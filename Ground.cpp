@@ -33,7 +33,7 @@ Ground::Initialize(void)
     // I CHANGED THE COLOR / IMAGE OF THE GRASS WHICH IS A BIG DEAL FOR ME!!!
     // Load the image for the texture. The texture file has to be in
     // a place where it will be found.
-    if ( ! ( image_data = (ubyte*)tga_load("index.tga", &image_width,
+    if ( ! ( image_data = (ubyte*)tga_load("grass3.tga", &image_width,
 					   &image_height, TGA_TRUECOLOR_24) ) )
     {
 	fprintf(stderr, "Ground::Initialize: Couldn't load grass.tga\n");
