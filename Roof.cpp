@@ -1,18 +1,28 @@
-
-#include "Cube.h"
+#include "Roof.h"
 #include "libtarga.h"
 #include <stdio.h>
 #include <GL/glu.h>
 
 
-Cube::Cube(void) {
+// center should be at 26, 0, 2?
+Roof::Roof(void) {
+    x = 26;
+    y = 0;
+    z = 2;
 	display_list = 0;
     texture_obj = NULL;
 	initialized = false;
 }
 
+// hopefully this will place the roof wherever I want.
+Roof::Roof(int c[3]) {
+    x, y, z = c[0], c[1], c[2];
+	display_list = 0;
+    texture_obj = NULL;
+	initialized = false;
+}
 
-Cube::~Cube(void) {
+Roof::~Roof(void) {
     
     if (initialized) {
         glDeleteLists(display_list, 1);
@@ -21,20 +31,19 @@ Cube::~Cube(void) {
 }
 
 
-
 // Initializer. Would return false if anything could go wrong.
 bool
-Cube::Initialize(void) {
+Roof::Initialize(void) {
     ubyte   *image_data;
     int	    image_height, image_width;
 
 
     // Load the image for the texture. The texture file has to be in
     // a place where it will be found.
-    if ( ! ( image_data = (ubyte*)tga_load("wh_wood.tga", &image_width,
+    if ( ! ( image_data = (ubyte*)tga_load("red_roof.tga", &image_width,
 					   &image_height, TGA_TRUECOLOR_24) ) )
     {
-	fprintf(stderr, "Cube::Initialize: Couldn't load wh_wood.tga\n");
+	fprintf(stderr, "Roof::Initialize: Couldn't load red_roof.tga\n");
 	return false;
     }
 
@@ -46,7 +55,7 @@ Cube::Initialize(void) {
     // This sets a parameter for how the texture is loaded and interpreted.
     // basically, it says that the data is packed tightly in the image array.
     // DON'T KNOW IF I ACTUALLY NEED THIS OR NAW!!!
-   glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
     // This sets up the texture with high quality filtering. First it builds
     // mipmaps from the image data, then it sets the filtering parameters
@@ -72,7 +81,7 @@ Cube::Initialize(void) {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texture_obj);
 
-    DrawCube();
+    DrawRoof();
 
 	// Turn texturing off again, because we don't want everything else to
 	// be textured.
@@ -86,73 +95,70 @@ Cube::Initialize(void) {
 }
 
 //void
-//Cube::Update(void) {
+//Roof::Update(void) {
 //
 //} // Updates the location of the train
 
+// this i jus copied and modified from the ground.cpp version
 void
-Cube::Draw(void) {
+Roof::Draw(void) {
     glPushMatrix();
     glCallList(display_list);
     glPopMatrix();
 }
 
+// center should be at 26, 0, 2?
 void
-Cube::DrawCube(void) {
+Roof::DrawRoof(void) {
+
     glBegin(GL_QUADS);
-    // front
-    glColor3f(1, 1, 1);
-    glNormal3f(0, 0, 1);
-
-    glTexCoord2f(0, 1);  glVertex3f(24, 2, 2);
-    glTexCoord2f(0, 0);  glVertex3f(24, -2, 2);
-    glTexCoord2f(1, 0);  glVertex3f(28, -2, 2);
-    glTexCoord2f(1, 0);  glVertex3f(28, 2, 2);
-
-    // back
-    glColor3f(1, 1, 1);
+    // this I think is the bottom?
+    glColor3f(1, 0, 0);
     glNormal3f(0, 0, -1);
 
-    glTexCoord2f(1, 1);  glVertex3f(24, 2, 0);
-    glTexCoord2f(0, 1);  glVertex3f(28, 2, 0);
-    glTexCoord2f(0, 0);  glVertex3f(28, -2, 0);
-    glTexCoord2f(1, 0);  glVertex3f(24, -2, 0);
-
-    // top
-    glColor3f(1, 1, 1);
-    glNormal3f(0, 1, 0);
-
-    glTexCoord2f(0, 1);  glVertex3f(24, 2, 0);
-    glTexCoord2f(0, 0);  glVertex3f(24, 2, 2);
-    glTexCoord2f(1, 0);  glVertex3f(28, 2, 2);
-    glTexCoord2f(1, 1);  glVertex3f(28, 2, 0);
-
-    // bottom
-    glColor3f(1, 1, 1);
-    glNormal3f(0, -1, 0);
-
-    glTexCoord2f(0, 0);  glVertex3f(24, -2, 0);
-    glTexCoord2f(1, 0);  glVertex3f(28, -2, 0);
-    glTexCoord2f(1, 1);  glVertex3f(28, -2, 2);
-    glTexCoord2f(0, 1);  glVertex3f(24, -2, 2);
-
-    // left
-    glColor3f(1, 1, 1);
-    glNormal3f(-1, 0, 0);
-
-    glTexCoord2f(0, 1);  glVertex3f(24, 2, 0);
-    glTexCoord2f(0, 0);  glVertex3f(24, -2, 0);
-    glTexCoord2f(1, 0);  glVertex3f(24, -2, 2);
-    glTexCoord2f(1, 1);  glVertex3f(24, 2, 2);
-
-    // right
-    glColor3f(1, 1, 1);
-    glNormal3f(1, 0, 0);
-
-    glTexCoord2f(0, 1);  glVertex3f(28, 2, 2);
-    glTexCoord2f(0, 0);  glVertex3f(28, -2, 2);
-    glTexCoord2f(1, 0);  glVertex3f(28, -2, 0);
-    glTexCoord2f(1, 1);  glVertex3f(28, 2, 0);
-    
+    glVertex3f(x-3, y+3, z);
+    glVertex3f(x+3, y+3, z);
+    glVertex3f(x+3, y-3, z);
+    glVertex3f(x-3, y-3, z);
     glEnd();
+
+    // this is where will build 4 triangles to a point
+    glBegin(GL_TRIANGLES);
+
+    // facing xpos?
+    glColor3f(1, 0, 0);
+    glNormal3f(1, 0, 1);
+
+    glVertex3f(x, y, z+2); 
+    glVertex3f(x+3, y-3, z);
+    glVertex3f(x+3, y+3, z);
+
+    // facing xneg?
+    glColor3f(1, 0, 0);
+    glNormal3f(-1, 0, 1);
+
+    glVertex3f(x, y, z+2); 
+    glVertex3f(x-3, y+3, z);
+    glVertex3f(x-3, y-3, z);
+
+    // facing ypos?
+    glColor3f(1, 0, 0);
+    glNormal3f(0, 1, 1);
+
+    glVertex3f(x, y, z+2); // say top?
+    glVertex3f(x+3, y+3, z);
+    glVertex3f(x-3, y+3, z);
+
+    // facing yneg?
+    glColor3f(1, 0, 0);
+    glNormal3f(0, -1, 1);
+
+    glVertex3f(x, y, z+2); // say top?
+    glVertex3f(x-3, y-3, z);
+    glVertex3f(x+3, y-3, z);
+    glEnd();
+
 }
+
+
+

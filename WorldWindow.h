@@ -16,7 +16,7 @@
 #include "Ground.h"
 #include "Track.h"
 #include "Cube.h"
-
+#include "Roof.h"
 
 // Subclass the Fl_Gl_Window because we want to draw OpenGL in here.
 class WorldWindow : public Fl_Gl_Window {
@@ -39,6 +39,7 @@ class WorldWindow : public Fl_Gl_Window {
 	Ground	    ground;	    // The ground object.
 	Track  traintrack;	    // The train and track.
 	Cube cube; // i'm trying to build a cube.
+	Roof roof; // i'm trying to build a roof for the cube now.
 
 	static const double FOV_X; // The horizontal field of view.
 

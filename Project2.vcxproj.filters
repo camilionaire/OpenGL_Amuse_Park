@@ -39,6 +39,9 @@
     <ClCompile Include="Cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Roof.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CubicBspline.h">
@@ -62,6 +65,9 @@
     <ClInclude Include="Cube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Roof.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="grass.tga" />
@@ -69,5 +75,6 @@
     <Image Include="grass3.tga" />
     <Image Include="graphics.tga" />
     <Image Include="wh_wood.tga" />
+    <Image Include="red_roof.tga" />
   </ItemGroup>
 </Project>

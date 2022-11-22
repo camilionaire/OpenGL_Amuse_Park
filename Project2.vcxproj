@@ -104,6 +104,7 @@
     <ClCompile Include="GenericException.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="libtarga.c" />
+    <ClCompile Include="Roof.cpp" />
     <ClCompile Include="Track.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldWindow.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="GenericException.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="libtarga.h" />
+    <ClInclude Include="Roof.h" />
     <ClInclude Include="Track.h" />
     <ClInclude Include="WorldWindow.h" />
   </ItemGroup>
@@ -122,6 +124,7 @@
     <Image Include="grass.tga" />
     <Image Include="grass2.tga" />
     <Image Include="grass3.tga" />
+    <Image Include="red_roof.tga" />
     <Image Include="wh_wood.tga" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
