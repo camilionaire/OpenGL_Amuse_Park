@@ -126,36 +126,36 @@ Roof::DrawRoof(void) {
     glBegin(GL_TRIANGLES);
 
     // facing xpos?
-    glColor3f(1, 0, 0);
+//    glColor3f(1, 0, 0);
     glNormal3f(1, 0, 1);
 
-    glVertex3f(x, y, z+2); 
-    glVertex3f(x+3, y-3, z);
-    glVertex3f(x+3, y+3, z);
+    glTexCoord2f(0.5, 1);   glVertex3f(x, y, z+2); 
+    glTexCoord2f(0, 0);     glVertex3f(x+3, y-3, z);
+    glTexCoord2f(1, 0);     glVertex3f(x+3, y+3, z);
 
     // facing xneg?
-    glColor3f(1, 0, 0);
+//    glColor3f(1, 0, 0);
     glNormal3f(-1, 0, 1);
 
-    glVertex3f(x, y, z+2); 
-    glVertex3f(x-3, y+3, z);
-    glVertex3f(x-3, y-3, z);
+    glTexCoord2f(0.5, 1);   glVertex3f(x, y, z+2); 
+    glTexCoord2f(1, 0);     glVertex3f(x-3, y+3, z);
+    glTexCoord2f(0, 0);     glVertex3f(x-3, y-3, z);
 
     // facing ypos?
-    glColor3f(1, 0, 0);
+//    glColor3f(1, 0, 0);
     glNormal3f(0, 1, 1);
 
-    glVertex3f(x, y, z+2); // say top?
-    glVertex3f(x+3, y+3, z);
-    glVertex3f(x-3, y+3, z);
+    glTexCoord2f(0.5, 1);   glVertex3f(x, y, z+2); // say top?
+    glTexCoord2f(1, 0);     glVertex3f(x+3, y+3, z);
+    glTexCoord2f(0, 0);     glVertex3f(x-3, y+3, z);
 
     // facing yneg?
-    glColor3f(1, 0, 0);
+//    glColor3f(1, 0, 0);
     glNormal3f(0, -1, 1);
 
-    glVertex3f(x, y, z+2); // say top?
-    glVertex3f(x-3, y-3, z);
-    glVertex3f(x+3, y-3, z);
+    glTexCoord2f(0.5, 1);   glVertex3f(x, y, z+2); // say top?
+    glTexCoord2f(0, 0);     glVertex3f(x-3, y-3, z);
+    glTexCoord2f(1, 0);     glVertex3f(x+3, y-3, z);
     glEnd();
 
 }
