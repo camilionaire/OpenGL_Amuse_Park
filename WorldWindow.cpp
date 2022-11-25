@@ -88,6 +88,7 @@ WorldWindow::draw(void)
 	traintrack.Initialize();
 	cube.Initialize();
 	roof.Initialize();
+	fence.Initialize();
     }
 
     // Stuff out here relies on a coordinate system or must be done on every
@@ -117,6 +118,7 @@ WorldWindow::draw(void)
     traintrack.Draw();
 	cube.Draw();
 	roof.Draw();
+	fence.Draw();
 }
 
 
