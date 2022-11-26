@@ -19,6 +19,7 @@
 #include "Roof.h"
 #include "Fence.h"
 #include "Diamond.h"
+#include "Tree.h"
 
 
 // Subclass the Fl_Gl_Window because we want to draw OpenGL in here.
@@ -45,6 +46,7 @@ class WorldWindow : public Fl_Gl_Window {
 	Roof roof; // i'm trying to build a roof for the cube now.
 	Fence fence;
 	Diamond diamond;
+	Tree tree;
 
 	static const double FOV_X; // The horizontal field of view.
 

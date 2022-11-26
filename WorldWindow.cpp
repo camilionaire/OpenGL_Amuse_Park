@@ -90,6 +90,7 @@ WorldWindow::draw(void)
 	roof.Initialize();
 	fence.Initialize();
 	diamond.Initialize();
+	tree.Initialize();
     }
 
     // Stuff out here relies on a coordinate system or must be done on every
@@ -121,6 +122,7 @@ WorldWindow::draw(void)
 	roof.Draw();
 	fence.Draw();
 	diamond.Draw();
+	tree.Draw();
 }
 
 
