@@ -45,6 +45,9 @@
     <ClCompile Include="Fence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Diamond.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CubicBspline.h">
@@ -74,6 +77,9 @@
     <ClInclude Include="Fence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Diamond.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="grass.tga" />
@@ -83,5 +89,6 @@
     <Image Include="wh_wood.tga" />
     <Image Include="red_roof.tga" />
     <Image Include="wood_fence.tga" />
+    <Image Include="blue_glass.tga" />
   </ItemGroup>
 </Project>

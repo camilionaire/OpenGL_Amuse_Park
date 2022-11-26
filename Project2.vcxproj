@@ -101,6 +101,7 @@
   <ItemGroup>
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="CubicBspline.cpp" />
+    <ClCompile Include="Diamond.cpp" />
     <ClCompile Include="Fence.cpp" />
     <ClCompile Include="GenericException.cpp" />
     <ClCompile Include="Ground.cpp" />
@@ -113,6 +114,7 @@
   <ItemGroup>
     <ClInclude Include="Cube.h" />
     <ClInclude Include="CubicBspline.h" />
+    <ClInclude Include="Diamond.h" />
     <ClInclude Include="Fence.h" />
     <ClInclude Include="GenericException.h" />
     <ClInclude Include="Ground.h" />
@@ -122,6 +124,7 @@
     <ClInclude Include="WorldWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="blue_glass.tga" />
     <Image Include="graphics.tga" />
     <Image Include="grass.tga" />
     <Image Include="grass2.tga" />

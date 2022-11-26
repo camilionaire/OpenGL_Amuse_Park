@@ -89,6 +89,7 @@ WorldWindow::draw(void)
 	cube.Initialize();
 	roof.Initialize();
 	fence.Initialize();
+	diamond.Initialize();
     }
 
     // Stuff out here relies on a coordinate system or must be done on every
@@ -119,6 +120,7 @@ WorldWindow::draw(void)
 	cube.Draw();
 	roof.Draw();
 	fence.Draw();
+	diamond.Draw();
 }
 
 

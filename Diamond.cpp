@@ -1,28 +1,17 @@
-#include "Roof.h"
+#include "Diamond.h"
 #include "libtarga.h"
 #include <stdio.h>
 #include <GL/glu.h>
 
 
-// center should be at 26, 0, 2?
-Roof::Roof(void) {
-    x = 26;
-    y = 0;
-    z = 2;
+Diamond::Diamond(void) {
 	display_list = 0;
     texture_obj = NULL;
 	initialized = false;
 }
 
-// hopefully this will place the roof wherever I want.
-Roof::Roof(int c[3]) {
-    x, y, z = c[0], c[1], c[2];
-	display_list = 0;
-    texture_obj = NULL;
-	initialized = false;
-}
 
-Roof::~Roof(void) {
+Diamond::~Diamond(void) {
     
     if (initialized) {
         glDeleteLists(display_list, 1);
@@ -31,19 +20,20 @@ Roof::~Roof(void) {
 }
 
 
+
 // Initializer. Would return false if anything could go wrong.
 bool
-Roof::Initialize(void) {
+Diamond::Initialize(void) {
     ubyte   *image_data;
     int	    image_height, image_width;
 
 
     // Load the image for the texture. The texture file has to be in
     // a place where it will be found.
-    if ( ! ( image_data = (ubyte*)tga_load("red_roof.tga", &image_width,
+    if ( ! ( image_data = (ubyte*)tga_load("blue_glass.tga", &image_width,
 					   &image_height, TGA_TRUECOLOR_24) ) )
     {
-	fprintf(stderr, "Roof::Initialize: Couldn't load red_roof.tga\n");
+	fprintf(stderr, "Cube::Initialize: Couldn't load wh_wood.tga\n");
 	return false;
     }
 
@@ -55,7 +45,7 @@ Roof::Initialize(void) {
     // This sets a parameter for how the texture is loaded and interpreted.
     // basically, it says that the data is packed tightly in the image array.
     // DON'T KNOW IF I ACTUALLY NEED THIS OR NAW!!!
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+   glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
     // This sets up the texture with high quality filtering. First it builds
     // mipmaps from the image data, then it sets the filtering parameters
@@ -64,7 +54,7 @@ Roof::Initialize(void) {
     gluBuild2DMipmaps(GL_TEXTURE_2D,3, image_width, image_height, 
 		      GL_RGB, GL_UNSIGNED_BYTE, image_data);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
 		    GL_NEAREST_MIPMAP_LINEAR);
@@ -81,7 +71,7 @@ Roof::Initialize(void) {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texture_obj);
 
-    DrawRoof();
+    DrawDiamond();
 
 	// Turn texturing off again, because we don't want everything else to
 	// be textured.
@@ -94,71 +84,82 @@ Roof::Initialize(void) {
 	return true;
 }
 
-//void
-//Roof::Update(void) {
-//
-//} // Updates the location of the train
 
-// this i jus copied and modified from the ground.cpp version
 void
-Roof::Draw(void) {
+Diamond::Draw(void) {
     glPushMatrix();
     glCallList(display_list);
     glPopMatrix();
 }
 
-// center should be at 26, 0, 2?
 void
-Roof::DrawRoof(void) {
+Diamond::DrawDiamond(void) {
 
-    glBegin(GL_QUADS);
-    // this I think is the bottom?
-    glColor3f(1, 0, 0);
-    glNormal3f(0, 0, -1);
-
-    glVertex3f(x-3, y+3, z);
-    glVertex3f(x+3, y+3, z);
-    glVertex3f(x+3, y-3, z);
-    glVertex3f(x-3, y-3, z);
-    glEnd();
-
-    // this is where will build 4 triangles to a point
     glBegin(GL_TRIANGLES);
 
-    // facing xpos?
-    glColor3f(1, 1, 1);
-    glNormal3f(1, 0, 1);
+    // this should be bottom half of diamond.
+    glColor3f(1, 1, 0);
 
-    glTexCoord2f(0.5, 1);   glVertex3f(x, y, z+2); 
-    glTexCoord2f(0, 0);     glVertex3f(x+3, y-3, z);
-    glTexCoord2f(1, 0);     glVertex3f(x+3, y+3, z);
+    // facing xpos?
+    glNormal3f(1, 1, -0.5);
+
+    glTexCoord2f(0.5, 0);   glVertex3f(0, 0, 10); 
+    glTexCoord2f(0, 1);     glVertex3f(0, 4, 15);
+    glTexCoord2f(1, 1);     glVertex3f(4, 0, 15);
 
     // facing xneg?
-//    glColor3f(1, 0, 0);
-    glNormal3f(-1, 0, 1);
+    glNormal3f(1, -1, -0.5);
 
-    glTexCoord2f(0.5, 1);   glVertex3f(x, y, z+2); 
-    glTexCoord2f(1, 0);     glVertex3f(x-3, y+3, z);
-    glTexCoord2f(0, 0);     glVertex3f(x-3, y-3, z);
+    glTexCoord2f(0.5, 0);   glVertex3f(0, 0, 10); 
+    glTexCoord2f(0, 1);     glVertex3f(4, 0, 15);
+    glTexCoord2f(1, 1);     glVertex3f(0, -4, 15);
 
     // facing ypos?
-//    glColor3f(1, 0, 0);
-    glNormal3f(0, 1, 1);
+    glNormal3f(-1, -1, -0.5);
 
-    glTexCoord2f(0.5, 1);   glVertex3f(x, y, z+2); // say top?
-    glTexCoord2f(1, 0);     glVertex3f(x+3, y+3, z);
-    glTexCoord2f(0, 0);     glVertex3f(x-3, y+3, z);
+    glTexCoord2f(0.5, 0);   glVertex3f(0, 0, 10); 
+    glTexCoord2f(0, 1);     glVertex3f(0, -4, 15);
+    glTexCoord2f(1, 1);     glVertex3f(-4, 0, 15);
 
     // facing yneg?
-//    glColor3f(1, 0, 0);
-    glNormal3f(0, -1, 1);
+    glNormal3f(-1, 1, -0.5);
 
-    glTexCoord2f(0.5, 1);   glVertex3f(x, y, z+2); // say top?
-    glTexCoord2f(0, 0);     glVertex3f(x-3, y-3, z);
-    glTexCoord2f(1, 0);     glVertex3f(x+3, y-3, z);
+    glTexCoord2f(0.5, 0);   glVertex3f(0, 0, 10); 
+    glTexCoord2f(0, 1);     glVertex3f(-4, 0, 15);
+    glTexCoord2f(1, 1);     glVertex3f(0, 4, 15);
+
+
+    // this will be the top half of the diamond
+    // facing xpos?
+    glNormal3f(1, 1, 0.5);
+
+    glTexCoord2f(0.5, 1);   glVertex3f(0, 0, 20); 
+    glTexCoord2f(1, 0);     glVertex3f(4, 0, 15);
+    glTexCoord2f(0, 0);     glVertex3f(0, 4, 15);
+
+    // facing xneg?
+    glNormal3f(1, -1, 0.5);
+
+    glTexCoord2f(0.5, 1);   glVertex3f(0, 0, 20); 
+    glTexCoord2f(1, 0);     glVertex3f(0, -4, 15);
+    glTexCoord2f(0, 0);     glVertex3f(4, 0, 15);
+
+    // facing ypos?
+    glNormal3f(-1, -1, 0.5);
+
+    glTexCoord2f(0.5, 1);   glVertex3f(0, 0, 20); 
+    glTexCoord2f(1, 0);     glVertex3f(-4, 0, 15);
+    glTexCoord2f(0, 0);     glVertex3f(0, -4, 15);
+
+    // facing yneg?
+    glNormal3f(-1, 1, 0.5);
+
+    glTexCoord2f(0.5, 1);   glVertex3f(0, 0, 20); 
+    glTexCoord2f(1, 0);     glVertex3f(0, 4, 15);
+    glTexCoord2f(0, 0);     glVertex3f(-4, 0, 15);
+
     glEnd();
 
+
+
 }
-
-
-
