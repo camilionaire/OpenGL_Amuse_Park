@@ -92,6 +92,7 @@ WorldWindow::draw(void)
 	diamond.Initialize();
 	tree.Initialize();
 	tree2.Initialize();
+	tree3.Initialize();
     }
 
     // Stuff out here relies on a coordinate system or must be done on every
@@ -125,6 +126,7 @@ WorldWindow::draw(void)
 	diamond.Draw();
 	tree.Draw();
 	tree2.Draw();
+	tree3.Draw();
 }
 
 

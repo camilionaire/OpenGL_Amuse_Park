@@ -33,7 +33,7 @@ Ground::Initialize(void)
     // I CHANGED THE COLOR / IMAGE OF THE GRASS WHICH IS A BIG DEAL FOR ME!!!
     // Load the image for the texture. The texture file has to be in
     // a place where it will be found.
-    if ( ! ( image_data = (ubyte*)tga_load("grass2.tga", &image_width,
+    if ( ! ( image_data = (ubyte*)tga_load("grass3.tga", &image_width,
 					   &image_height, TGA_TRUECOLOR_24) ) )
     {
 	fprintf(stderr, "Ground::Initialize: Couldn't load grass.tga\n");
@@ -80,13 +80,13 @@ Ground::Initialize(void)
 
 	// Draw the ground as a quadrilateral, specifying texture coordinates.
 	glBegin(GL_QUADS);
-	    glTexCoord2f(1.0, 1.0);
+	    glTexCoord2f(1, 0);
 	    glVertex3f(50.0, 50.0, 0.0);
-	    glTexCoord2f(-1.0, 1.0);
+	    glTexCoord2f(0, 0);
 	    glVertex3f(-50.0, 50.0, 0.0);
-	    glTexCoord2f(-1.0, -1.0);
+	    glTexCoord2f(0, 1);
 	    glVertex3f(-50.0, -50.0, 0.0);
-	    glTexCoord2f(1.0, -1.0);
+	    glTexCoord2f(1, 1);
 	    glVertex3f(50.0, -50.0, 0.0);
 	glEnd();
 

@@ -21,6 +21,7 @@
 #include "Diamond.h"
 #include "Tree.h"
 #include "Tree2.h"
+#include "Tree3.h"
 
 
 // Subclass the Fl_Gl_Window because we want to draw OpenGL in here.
@@ -49,6 +50,7 @@ class WorldWindow : public Fl_Gl_Window {
 	Diamond diamond;
 	Tree tree;
 	Tree2 tree2;
+	Tree3 tree3;
 
 	static const double FOV_X; // The horizontal field of view.
 
