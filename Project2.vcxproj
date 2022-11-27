@@ -109,6 +109,7 @@
     <ClCompile Include="Roof.cpp" />
     <ClCompile Include="Track.cpp" />
     <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="Tree2.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldWindow.cpp" />
   </ItemGroup>
@@ -123,6 +124,7 @@
     <ClInclude Include="Roof.h" />
     <ClInclude Include="Track.h" />
     <ClInclude Include="Tree.h" />
+    <ClInclude Include="Tree2.h" />
     <ClInclude Include="WorldWindow.h" />
   </ItemGroup>
   <ItemGroup>
