@@ -107,6 +107,7 @@
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="libtarga.c" />
     <ClCompile Include="Roof.cpp" />
+    <ClCompile Include="Torus.cpp" />
     <ClCompile Include="Track.cpp" />
     <ClCompile Include="Tree.cpp" />
     <ClCompile Include="Tree2.cpp" />
@@ -123,6 +124,7 @@
     <ClInclude Include="Ground.h" />
     <ClInclude Include="libtarga.h" />
     <ClInclude Include="Roof.h" />
+    <ClInclude Include="Torus.h" />
     <ClInclude Include="Track.h" />
     <ClInclude Include="Tree.h" />
     <ClInclude Include="Tree2.h" />

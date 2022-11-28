@@ -93,6 +93,7 @@ WorldWindow::draw(void)
 	tree.Initialize();
 	tree2.Initialize();
 	tree3.Initialize();
+	torus.Initialize();
     }
 
     // Stuff out here relies on a coordinate system or must be done on every
@@ -127,6 +128,7 @@ WorldWindow::draw(void)
 	tree.Draw();
 	tree2.Draw();
 	tree3.Draw();
+	torus.Draw();
 }
 
 

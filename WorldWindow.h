@@ -22,6 +22,7 @@
 #include "Tree.h"
 #include "Tree2.h"
 #include "Tree3.h"
+#include "Torus.h"
 
 
 // Subclass the Fl_Gl_Window because we want to draw OpenGL in here.
@@ -51,6 +52,7 @@ class WorldWindow : public Fl_Gl_Window {
 	Tree tree;
 	Tree2 tree2;
 	Tree3 tree3;
+	Torus torus;
 
 	static const double FOV_X; // The horizontal field of view.
 

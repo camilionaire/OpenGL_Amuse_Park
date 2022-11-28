@@ -37,11 +37,13 @@ Tree::Draw() {
 
 	glPushMatrix();
 
+	// brown color
 	glColor3f(0.588, 0.294, 0.0);
 	glTranslatef(-45, 40, 0);
 	// obj ptr, base rad, top rad, height, slice around, slice up
 	gluCylinder(quadric_obj, 1.0, 1.0, 2.0, 16, 16);
 
+	// forrest green color
 	glColor3f(0.133, 0.545, 0.133);
 	
 	glTranslatef(0, 0, 2);
