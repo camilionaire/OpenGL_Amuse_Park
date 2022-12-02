@@ -84,7 +84,7 @@ Torus::Draw(void) {
 	glTranslatef(35, -40, 1);
 	glColor3f(1, 0.0627, 0.9412); // hot pink
 	// this is the hot pink side?
-    for (int d = 0; d <= 3; d++) {
+    for (int d = 0; d <= 8; d++) {
 		glBegin(GL_POLYGON);
 		float angle = d * 45.0 / 360;
 		glNormal3f(cos(angle), sin(angle), 0);
@@ -102,7 +102,7 @@ Torus::Draw(void) {
 	glRotatef(-45.0, 0, 0, 1);
 	glColor3f(0.1216, 0.3176, 1);
 	
-    for (int d = 0; d <= 3; d++) {
+    for (int d = 0; d <= 8; d++) {
 		glBegin(GL_POLYGON);
 		float angle = d * 45.0 / 360;
 		glNormal3f(-cos(angle), -sin(angle), 0);

@@ -41,13 +41,24 @@ Tree::Draw() {
 	glColor3f(0.588, 0.294, 0.0);
 	glTranslatef(-45, 40, 0);
 	// obj ptr, base rad, top rad, height, slice around, slice up
-	gluCylinder(quadric_obj, 1.0, 1.0, 2.0, 16, 16);
+	gluCylinder(quadric_obj, 1.0, 1.0, 2, 16, 16);
+
+	glTranslatef(6, 2, 0);
+	gluCylinder(quadric_obj, 1.0, .75, 2, 16, 16);
+
+
+	glTranslatef(-6, 4, 0);
+	gluCylinder(quadric_obj, 1.0, 1.0, 2, 16, 16);
 
 	// forrest green color
 	glColor3f(0.133, 0.545, 0.133);
 	
-	glTranslatef(0, 0, 2);
+	glTranslatef(0, -6, 2);
 	gluCylinder(quadric_obj, 2.0, 0.0, 12.0, 16, 16);
+	glTranslatef(6, 2, 0);
+	gluCylinder(quadric_obj, 2.0, 0.0, 8.0, 16, 16);
+	glTranslatef(-6, 4, 0);
+	gluCylinder(quadric_obj, 3.0, 0.0, 16.0, 16, 16);
 
 	glPopMatrix();
 }
