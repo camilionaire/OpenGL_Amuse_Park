@@ -221,6 +221,27 @@ WorldWindow::handle(int event)
       case FL_RELEASE:
         button = -1;
 	return 1;
+
+	// this is the simple thing that I added.
+	// it 
+	  case FL_KEYBOARD:
+		  printf("a button was pushed\n");
+		  int key = Fl::event_key();
+		  if (key == 32) { // a space bar
+			  printf("a space was pushed\n");
+			phi = 15.0f;
+			theta = 0.0f;
+			dist = 95.0f;
+			x_at = 0.0f;
+			y_at = 0.0f;
+		  } else if(key == 116) {// the letter 't'
+			phi = 90.0f;
+			theta = 0.0f;
+			dist = 100.0f;
+			x_at = 0.0f;
+			y_at = 0.0f;
+
+		  }
     }
 
     // Pass any other event types on the superclass.
