@@ -30,14 +30,9 @@ Tree3::Initialize() {
 void
 Tree3::DrawTree3() {
 
-}
-
-void
-Tree3::Draw() {
-
 	glPushMatrix();
+	glScalef(0.6, 0.6, 0.6);
 	glColor3f(0.588, 0.294, 0.0);
-	glTranslatef(35, 45, 0);
 	// obj ptr, base rad, top rad, height, slice around, slice up
 	gluCylinder(quadric_obj, 1.0, 1.0, 2.0, 16, 16);
 
@@ -47,6 +42,26 @@ Tree3::Draw() {
 	glScalef(1.0, 1.0, 2.0);
 //	gluCylinder(quadric_obj, 2.0, 0.0, 12.0, 16, 16);
 	gluSphere(quadric_obj, 4.0, 16, 16);
+
+	glPopMatrix();
+}
+
+void
+Tree3::Draw() {
+
+	glPushMatrix();
+	glTranslatef(48, 12, 0);
+	DrawTree3();
+	glTranslatef(-8, 0, 0);
+	DrawTree3();
+	glTranslatef(-8, 0, 0);
+	DrawTree3();
+	glTranslatef(0, -24, 0);
+	DrawTree3();
+	glTranslatef(8, 0, 0);
+	DrawTree3();
+	glTranslatef(8, 0, 0);
+	DrawTree3();
 
 	glPopMatrix();
 
