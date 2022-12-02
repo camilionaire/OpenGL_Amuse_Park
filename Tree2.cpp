@@ -30,24 +30,35 @@ Tree2::Initialize() {
 void
 Tree2::DrawTree2() {
 
+	glPushMatrix();
+	glColor3f(0.588, 0.294, 0.0);
+	// obj ptr, base rad, top rad, height, slice around, slice up
+	gluCylinder(quadric_obj, 1.0, 1.0, 2.0, 16, 16);
+	glColor3f(0.133, 0.545, 0.133);
+	
+	glTranslatef(0, 0, 5.5);
+//	gluCylinder(quadric_obj, 2.0, 0.0, 12.0, 16, 16);
+	gluSphere(quadric_obj, 4.0, 16, 16);
+	glPopMatrix();
 }
 
 void
 Tree2::Draw() {
 
 	glPushMatrix();
-	glColor3f(0.588, 0.294, 0.0);
 	glTranslatef(-35, -45, 0);
-	// obj ptr, base rad, top rad, height, slice around, slice up
-	gluCylinder(quadric_obj, 1.0, 1.0, 2.0, 16, 16);
 
-	glColor3f(0.133, 0.545, 0.133);
-	
-	glTranslatef(0, 0, 5.5);
-//	gluCylinder(quadric_obj, 2.0, 0.0, 12.0, 16, 16);
-	gluSphere(quadric_obj, 4.0, 16, 16);
+	DrawTree2();
+	glTranslatef(4, 4, 0);
+	glScalef(0.5, 0.5, 0.5);
+	DrawTree2();
+
+	glScalef(1, 1, 4);
+	glTranslatef(-20, -2, 0);
+	DrawTree2();
 
 	glPopMatrix();
 
 }
+
 
